@@ -150,11 +150,18 @@ function showAnswer() {
         id: 'answerTxt',
         text: ansText
     });
+
+    var imgDiv = new $('<img>', {
+        id: 'answerImg',
+        src: 'assets/images/' + currentQuestion.answerImg
+    });
+
     $('#triviaQuestion').append(answerDiv);
+    $('#triviaQuestion').append(imgDiv);
 
 
     currentQuestionIdx++;
-    setTimeout(showQuestion, 1000);
+    setTimeout(showQuestion, 2000);
 }
 
 
