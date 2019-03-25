@@ -26,10 +26,13 @@ var currentQuestionIdx = 0;
 var score;
 var isWin = false;
 var currentQuestion;
+var questionLapse = 10;
+var timeRemainingId;
 
 
 function resestGame() {
     currentQuestionIdx = 0;
+    questionLapse = 10;
     score = new Score(0, 0, 0);
     $("#playbtn").css('display', 'none');
 }
@@ -37,7 +40,15 @@ function resestGame() {
 function resetQuestion() {
     isWin = false;
     isAnswered = false;
+    questionLapse = 10;
+    $('#timer').text("Time Remaining: "+ questionLapse + " seconds");
     $('#triviaQuestion').empty();
+    timeRemainingId = setInterval(count, 1000);
+}
+
+function count() {
+    questionLapse--;
+    $('#timer').text("Time Remaining: "+ questionLapse + " seconds");
 }
 
 function startGame() {
@@ -47,6 +58,8 @@ function startGame() {
 
 function showScore() {
     resetQuestion();
+    clearInterval(timeRemainingId);
+    $('#timer').empty();
 
     var questionDiv = new $('<h5>', {
         class: 'card-title',
@@ -126,11 +139,12 @@ function showQuestion() {
         $('#triviaQuestion').append(optionBtn);
 
     }
-    timerIsUp = setInterval(showAnswer, 5000);
+    timerIsUp = setInterval(showAnswer, 10000);
 }
 
 function showAnswer() {
 
+    clearInterval(timeRemainingId);
     //empty
     $('#triviaQuestion').empty();
     var ansText = "";
