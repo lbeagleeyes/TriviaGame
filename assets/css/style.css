@@ -1,0 +1,14 @@
+.option {
+    margin: 5%;
+    display: block;
+  }
+
+  .card, #playbtn {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+  }
+
+  h1 {
+    font-family: 'Germania One', cursive;
+  }
