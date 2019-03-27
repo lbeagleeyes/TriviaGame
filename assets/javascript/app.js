@@ -32,7 +32,29 @@ var currentQuestion;
 function resestGame() {
     currentQuestionIdx = 0;
     score = new Score(0, 0, 0);
+
+    $('.triviaCardContainer').empty();
+
+    var cardDiv = new $('<div>', {
+        class:"card bg-light mb-3",
+        style:"max-width: 24rem;"
+    });
+   
+    var cardHeader = new $('<div>', {
+        class:"card-header", 
+        id:"timer"
+    });
+    cardDiv.append(cardHeader);
+
+    var cardBody = new $('<div>', {
+        class:"card-body", id:"triviaQuestion"
+    });
+    cardDiv.append(cardBody);
+
+    $('.triviaCardContainer').append(cardDiv);
+
     $("#playbtn").css('display', 'none');
+    $("#playbtn").text("Play Again");
 }
 
 function resetQuestion() {
@@ -52,39 +74,6 @@ function count() {
 function startGame() {
     resestGame();
     showQuestion();
-}
-
-function showScore() {
-    resetQuestion();
-    clearInterval(timeRemainingId);
-    $('#timer').empty();
-
-    var questionDiv = new $('<h5>', {
-        class: 'card-title',
-        id: 'scoreTxt',
-        text: 'Final Score'
-    });
-
-    $('#triviaQuestion').append(questionDiv);
-
-    var winsTxt = $('<p>', {
-        id: 'wins',
-        text: 'Wins: ' + score.wins
-    });
-    var losesTxt = $('<p>', {
-        id: 'loses',
-        text: 'Loses: ' + score.loses
-    });
-    var unansTxt = $('<p>', {
-        id: 'unans',
-        text: 'Unanswered: ' + score.unanswered
-    });
-
-    $('#triviaQuestion').append(winsTxt);
-    $('#triviaQuestion').append(losesTxt);
-    $('#triviaQuestion').append(unansTxt);
-
-    $("#playbtn").css('display', 'block');
 }
 
 function showQuestion() {
@@ -175,14 +164,40 @@ function showAnswer() {
     $('#triviaQuestion').append(answerDiv);
     $('#triviaQuestion').append(imgDiv);
 
-
     currentQuestionIdx++;
     setTimeout(showQuestion, 2000);
 }
 
+function showScore() {
+    resetQuestion();
+    clearInterval(timeRemainingId);
+    $('#timer').empty();
 
-$(document).ready(function () {
-    startGame();
-});
+    var questionDiv = new $('<h5>', {
+        class: 'card-title',
+        id: 'scoreTxt',
+        text: 'Final Score'
+    });
 
+    $('#triviaQuestion').append(questionDiv);
+
+    var winsTxt = $('<p>', {
+        id: 'wins',
+        text: 'Wins: ' + score.wins
+    });
+    var losesTxt = $('<p>', {
+        id: 'loses',
+        text: 'Loses: ' + score.loses
+    });
+    var unansTxt = $('<p>', {
+        id: 'unans',
+        text: 'Unanswered: ' + score.unanswered
+    });
+
+    $('#triviaQuestion').append(winsTxt);
+    $('#triviaQuestion').append(losesTxt);
+    $('#triviaQuestion').append(unansTxt);
+
+    $("#playbtn").css('display', 'block');
+}
 
