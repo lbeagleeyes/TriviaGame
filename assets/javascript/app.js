@@ -19,20 +19,18 @@ class Score {
     }
 }
 
-
+var questionLapse;
 var timerIsUp;
-var isAnswered = false;
-var currentQuestionIdx = 0;
-var score;
-var isWin = false;
-var currentQuestion;
-var questionLapse = 10;
 var timeRemainingId;
+var isAnswered = false;
+var isWin = false;
+var score;
+var currentQuestionIdx = 0;
+var currentQuestion;
 
 
 function resestGame() {
     currentQuestionIdx = 0;
-    questionLapse = 10;
     score = new Score(0, 0, 0);
     $("#playbtn").css('display', 'none');
 }
@@ -40,7 +38,7 @@ function resestGame() {
 function resetQuestion() {
     isWin = false;
     isAnswered = false;
-    questionLapse = 10;
+    questionLapse = 15;
     $('#timer').text("Time Remaining: "+ questionLapse + " seconds");
     $('#triviaQuestion').empty();
     timeRemainingId = setInterval(count, 1000);
@@ -105,8 +103,12 @@ function showQuestion() {
         id: 'questionTxt',
         text: currentQuestion.question
     });
-
     $('#triviaQuestion').append(questionDiv);
+
+    var btnGroup = new $('<div>', {
+        class: 'btn-group-vertical'
+    });
+    $('#triviaQuestion').append(btnGroup);
 
     for (var i = 0; i < 4; i++) {
 
@@ -125,27 +127,27 @@ function showQuestion() {
                 if (+userOption == currentQuestion.answerIndex) {
                     score.addWin();
                     isWin = true;
-                    //show you win!
+                    // you win!
                 } else {
                     score.addLoss();
                     isWin = false;
-                    //show you loose
+                    // you loose
                 }
 
                 showAnswer();
             }
         });
 
-        $('#triviaQuestion').append(optionBtn);
+        btnGroup.append(optionBtn);
 
     }
-    timerIsUp = setInterval(showAnswer, 10000);
+    timerIsUp = setInterval(showAnswer, questionLapse*1000);
 }
 
 function showAnswer() {
 
     clearInterval(timeRemainingId);
-    //empty
+    //clean question
     $('#triviaQuestion').empty();
     var ansText = "";
     if (!isAnswered) {
@@ -179,13 +181,7 @@ function showAnswer() {
 }
 
 
-function clearView() {
-    $("#playbtn").css('display', 'none');
-}
-
 $(document).ready(function () {
-
-    clearView();
     startGame();
 });
 

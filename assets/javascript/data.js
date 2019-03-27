@@ -6,7 +6,7 @@ var arrQuestions = [{
     answerImg:"igor.jpg"
 }, {
     question: "What subject does Professor Slughorn teach?",
-    options: ["Defense Against the Dark Arts", "Transfiguration", "Potions", "NHistory of Magic"],
+    options: ["Defense Against the Dark Arts", "Transfiguration", "Potions", "History of Magic"],
     answerIndex: 2,
     answerImg:"potions.jpg"
 }, {
@@ -15,7 +15,7 @@ var arrQuestions = [{
     answerIndex: 3, 
     answerImg:"parents.jpg"
 }, {
-    question: "What creature does Harry see in the shadoes just before the Knight Bus arrives?",
+    question: "What creature does Harry see in the shadows just before the Knight Bus arrives?",
     options: ["A giant Dog", "A cat", "A werewolf", "A dementor"],
     answerIndex: 0,
     answerImg:"dog.jpg"
