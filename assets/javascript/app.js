@@ -156,13 +156,19 @@ function showAnswer() {
         text: ansText
     });
 
+    var imgContainer = new $('<div>', {
+        class:"container-fluid"
+    });
+
     var imgDiv = new $('<img>', {
         id: 'answerImg',
+        width: '100%',
         src: 'assets/images/' + currentQuestion.answerImg
     });
 
+    imgContainer.append(imgDiv);
     $('#triviaQuestion').append(answerDiv);
-    $('#triviaQuestion').append(imgDiv);
+    $('#triviaQuestion').append(imgContainer);
 
     currentQuestionIdx++;
     setTimeout(showQuestion, 2000);
