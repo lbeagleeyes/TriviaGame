@@ -1,9 +1,9 @@
 # TriviaGame
 
-* Harry Potter Tirvia game that shows only one question until the player answers it or time runs out (15 seconds).
+* Harry Potter Tirvia game. Answer each of the 10 questions proposed in less than 15 seconds. 
 
-*  Question will keep showing up win or loose.
+* On the final screen, you'll get the number of correct/incorrect/unanswered answers, and an option to play again.
 
-* On the final screen, you'll get the number of correct answers, incorrect answers, and an option to play again.
+Use https://lbeagleeyes.github.io/TriviaGame/ to access the trivia game. Use your phone or tablet if you prefer. 
 
 Have fun!
